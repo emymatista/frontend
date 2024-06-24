@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 14
+  - node
 
 before_script:
   - npm ci # Clean install all dependencies
@@ -16,8 +16,8 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: $AWS_BUCKET_NAME
-  edge: true # Opt in to dpl v2
-  skip_cleanup: true # Optional: Prevent Travis CI from deleting build artifacts
-  local_dir: dist # Specify the directory containing the build files (usually 'dist')
+  edge: true
+  skip_cleanup: true
+  local_dir: dist
   on:
-    tags: true # Only deploy on tagged commits
+    branch: main
