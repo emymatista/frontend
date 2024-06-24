@@ -3,13 +3,12 @@ node_js:
   - 14
 
 before_script:
-  - npm install # Ensure all dependencies are installed
+  - npm ci # Clean install all dependencies
 
 script:
   - npm run test:unit
 
 after_success:
-  - npm install # Ensure dependencies are installed before build
   - npm run build
 
 deploy:
