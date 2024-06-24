@@ -1,11 +1,21 @@
 language: node_js
 node_js:
   - 14
+
 script:
+  - npm install axios
+  - npm run test:unit
+
+after_success:
   - npm run build
+
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: $AWS_BUCKET_NAME
   edge: true # Opt in to dpl v2
+  skip_cleanup: true # Optional: Prevent Travis CI from deleting build artifacts
+  local_dir: dist # Specify the directory containing the build files (usually 'dist')
+  on:
+    tags: true # Only deploy on tagged commits

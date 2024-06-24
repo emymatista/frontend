@@ -64,7 +64,7 @@ export default {
     methods: {
         async submitForm() {
             try {
-                const response = await axios.post('https://projectbff-production.up.railway.app/bff/pedidos', this.formData);
+                const response = await axios.post('http://aws-bff2-env.eba-jvmmdhu4.us-east-1.elasticbeanstalk.com/bff/pedidos', this.formData);
                 console.log('Order submitted successfully:', response.data);
                 alert('Order submitted succesfully')
                 this.fetchData(); //Fetch the updated data
@@ -75,7 +75,7 @@ export default {
         },
         async fetchData() {
             try {
-                const response = await axios.get('https://projectbff-production.up.railway.app/bff/pedidos');
+                const response = await axios.get('http://aws-bff2-env.eba-jvmmdhu4.us-east-1.elasticbeanstalk.com/bff/pedidos');
                 this.data = response.data;
             } catch (error) {
                 console.error('Error fetching data:', error);
